@@ -10,27 +10,133 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[      1139,         42]
-NotebookOptionsPosition[       900,         29]
-NotebookOutlinePosition[      1243,         44]
-CellTagsIndexPosition[      1200,         41]
+NotebookDataLength[      4839,        165]
+NotebookOptionsPosition[      3680,        123]
+NotebookOutlinePosition[      4471,        150]
+CellTagsIndexPosition[      4428,        147]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[{
- RowBox[{"Needs", "[", "\"\<ErrorBarPlots`\>\"", "]"}], "\[IndentingNewLine]", 
+
+Cell[CellGroupData[{
+Cell["INTRO", "Section",
+ CellChangeTimes->{{3.5492098109676924`*^9, 3.5492098137718525`*^9}}],
+
+Cell[TextData[{
+ "\[LightBulb] This is a program for ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " fitting, using SN1a data.\n\[LightBulb] SN data are taken from ",
+ ButtonBox["http://supernova.lbl.gov/Union/",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://supernova.lbl.gov/Union/"], None},
+  ButtonNote->"http://supernova.lbl.gov/Union/"],
+ "\n\[LightBulb] \n\[LightBulb]\n",
+ "\[LightBulb]",
+ " "
+}], "Text",
+ CellChangeTimes->{{3.549209816716021*^9, 3.549209902300916*^9}, {
+  3.5492099570250463`*^9, 3.5492099668376074`*^9}, {3.5492100104201*^9, 
+  3.549210025327953*^9}, {3.549210062742093*^9, 3.5492100659172745`*^9}, {
+  3.5492101713483047`*^9, 3.5492101960437174`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["PRE", "Section",
+ CellChangeTimes->{{3.549209801259137*^9, 3.5492098038102827`*^9}, {
+  3.5492100760058517`*^9, 3.5492100762278643`*^9}}],
+
+Cell["Include the packages needed.", "Text",
+ CellChangeTimes->{{3.549210487146367*^9, 3.549210497142939*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<ErrorBarPlots`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.5492084345469656`*^9, 3.549208443821496*^9}, {
+  3.54920978557824*^9, 3.549209785684246*^9}, {3.5492103620702133`*^9, 
+  3.5492103629122615`*^9}}],
+
+Cell["\<\
+Set work directory. Modify it to your own directory before runing this \
+program. DATA folder are placed in this directory. DATA folder should contain \
+the SN data files.\
+\>", "Text",
+ CellChangeTimes->{{3.549210368042555*^9, 3.5492104770457897`*^9}}],
+
+Cell[BoxData[
  RowBox[{
   RowBox[{
   "SetDirectory", "[", 
    "\"\<E:\\\\Nutshare\\\\Store\\\\Projects\\\\Growth\\\\git\\\\CoChiSquare\>\
-\"", "]"}], ";"}], "\[IndentingNewLine]"}], "Input",
- CellChangeTimes->{{3.5492084345469656`*^9, 3.549208443821496*^9}}]
+\"", "]"}], ";"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["CAL", "Section",
+ CellChangeTimes->{{3.5492100811951485`*^9, 3.549210081701177*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Conventions etc", "Subsection",
+ CellChangeTimes->{{3.5492100999102187`*^9, 3.5492101210064254`*^9}}],
+
+Cell[TextData[{
+ "Line element: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["ds", "2"], "=", 
+    RowBox[{
+     RowBox[{"-", 
+      SuperscriptBox["dt", "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"a", "[", "t", "]"}], "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["dr", "2"], 
+         RowBox[{"1", "-", 
+          RowBox[{"k", " ", 
+           SuperscriptBox["r", "2"]}]}]], "+", 
+        RowBox[{
+         SuperscriptBox["r", "2"], "(", 
+         RowBox[{
+          SuperscriptBox["d\[Theta]", "2"], "+", 
+          RowBox[{
+           SuperscriptBox[
+            RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"], 
+           SuperscriptBox["d\[Phi]", "2"]}]}], ")"}]}], ")"}]}]}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\[CapitalOmega]m0: "
+}], "Text",
+ CellChangeTimes->{{3.549210202591092*^9, 3.5492103412830243`*^9}, {
+  3.54921110750485*^9, 3.5492111311172004`*^9}}]
+}, Open  ]]
+}, Open  ]]
 },
+WindowToolbars->{},
 WindowSize->{1016, 681},
 WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+DockedCells->{},
 FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (November 7, 2010)",
-StyleDefinitions->"Default.nb"
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> 
+     FrontEnd`FileName[{"Creative"}, "PastelColor.nb", CharacterEncoding -> 
+       "CP936"]]], 
+   Cell[
+    StyleData[All]]}, WindowSize -> {707, 553}, 
+  WindowMargins -> {{24, Automatic}, {Automatic, 30}}, Visible -> False, 
+  FrontEndVersion -> "8.0 for Microsoft Windows (32-bit) (November 7, 2010)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
 ]
 (* End of Notebook Content *)
 
@@ -43,7 +149,24 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[557, 20, 339, 7, 72, "Input"]
+Cell[CellGroupData[{
+Cell[579, 22, 94, 1, 75, "Section"],
+Cell[676, 25, 763, 19, 108, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1476, 49, 143, 2, 75, "Section"],
+Cell[1622, 53, 110, 1, 30, "Text"],
+Cell[1735, 56, 248, 4, 41, "Input"],
+Cell[1986, 62, 263, 5, 49, "Text"],
+Cell[2252, 69, 166, 5, 41, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2455, 79, 90, 1, 75, "Section"],
+Cell[CellGroupData[{
+Cell[2570, 84, 107, 1, 36, "Subsection"],
+Cell[2680, 87, 972, 32, 64, "Text"]
+}, Open  ]]
+}, Open  ]]
 }
 ]
 *)
