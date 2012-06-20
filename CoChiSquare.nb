@@ -10,14 +10,22 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[       764,         33]
-NotebookOptionsPosition[       560,         21]
-NotebookOutlinePosition[       903,         36]
-CellTagsIndexPosition[       860,         33]
+NotebookDataLength[      1139,         42]
+NotebookOptionsPosition[       900,         29]
+NotebookOutlinePosition[      1243,         44]
+CellTagsIndexPosition[      1200,         41]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+Cell[BoxData[{
+ RowBox[{"Needs", "[", "\"\<ErrorBarPlots`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\<E:\\\\Nutshare\\\\Store\\\\Projects\\\\Growth\\\\git\\\\CoChiSquare\>\
+\"", "]"}], ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5492084345469656`*^9, 3.549208443821496*^9}}]
 },
 WindowSize->{1016, 681},
 WindowMargins->{{Automatic, 0}, {Automatic, 0}},
@@ -35,9 +43,9 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[557, 20, 339, 7, 72, "Input"]
 }
 ]
 *)
 
 (* End of internal cache information *)
-
