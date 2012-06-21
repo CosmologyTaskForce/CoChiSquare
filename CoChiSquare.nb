@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[      4839,        165]
-NotebookOptionsPosition[      3680,        123]
-NotebookOutlinePosition[      4471,        150]
-CellTagsIndexPosition[      4428,        147]
+NotebookDataLength[     22716,        671]
+NotebookOptionsPosition[     20063,        587]
+NotebookOutlinePosition[     20823,        612]
+CellTagsIndexPosition[     20780,        609]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -51,14 +51,20 @@ Cell["PRE", "Section",
  CellChangeTimes->{{3.549209801259137*^9, 3.5492098038102827`*^9}, {
   3.5492100760058517`*^9, 3.5492100762278643`*^9}}],
 
+Cell[CellGroupData[{
+
+Cell["Settings", "Subsection",
+ CellChangeTimes->{{3.549230781416133*^9, 3.5492308369973125`*^9}}],
+
 Cell["Include the packages needed.", "Text",
  CellChangeTimes->{{3.549210487146367*^9, 3.549210497142939*^9}}],
 
-Cell[BoxData[
- RowBox[{"Needs", "[", "\"\<ErrorBarPlots`\>\"", "]"}]], "Input",
+Cell[BoxData[{
+ RowBox[{"Needs", "[", "\"\<ErrorBarPlots`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", "PhysicalConstants`"}]}], "Input",
  CellChangeTimes->{{3.5492084345469656`*^9, 3.549208443821496*^9}, {
   3.54920978557824*^9, 3.549209785684246*^9}, {3.5492103620702133`*^9, 
-  3.5492103629122615`*^9}}],
+  3.5492103629122615`*^9}, {3.5492315856821346`*^9, 3.549231586058156*^9}}],
 
 Cell["\<\
 Set work directory. Modify it to your own directory before runing this \
@@ -77,13 +83,9 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["CAL", "Section",
- CellChangeTimes->{{3.5492100811951485`*^9, 3.549210081701177*^9}}],
-
-Cell[CellGroupData[{
-
-Cell["Conventions etc", "Subsection",
- CellChangeTimes->{{3.5492100999102187`*^9, 3.5492101210064254`*^9}}],
+Cell["Conventions, parameters, etc", "Subsection",
+ CellChangeTimes->{{3.5492100999102187`*^9, 3.5492101210064254`*^9}, {
+  3.5492308396224623`*^9, 3.549230845279786*^9}}],
 
 Cell[TextData[{
  "Line element: ",
@@ -113,11 +115,473 @@ Cell[TextData[{
             RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"], 
            SuperscriptBox["d\[Phi]", "2"]}]}], ")"}]}], ")"}]}]}]}], 
    TraditionalForm]],
-  FormatType->"TraditionalForm"],
- "\n\[CapitalOmega]m0: "
+  FormatType->"TraditionalForm"]
 }], "Text",
  CellChangeTimes->{{3.549210202591092*^9, 3.5492103412830243`*^9}, {
-  3.54921110750485*^9, 3.5492111311172004`*^9}}]
+  3.54921110750485*^9, 3.5492111311172004`*^9}, {3.5492303834643717`*^9, 
+  3.5492303843344216`*^9}}],
+
+Cell["\<\
+\[CapitalOmega]m0: matter fraction
+\[CapitalOmega]d0: dark energy/cosmological constant fraction
+\[CapitalOmega]r0: radiation fraction\
+\>", "Text",
+ CellChangeTimes->{{3.549230391529833*^9, 3.5492303941849847`*^9}, {
+  3.549230426508834*^9, 3.5492304975388966`*^9}}],
+
+Cell["\<\
+\[CapitalOmega]m0w: matter fraction given by WMAP
+\[CapitalOmega]d0w: dark energy/cosmological constant fraction given by WMAP
+\[CapitalOmega]r0w: radiation fraction given WMAP\
+\>", "Text",
+ CellChangeTimes->{{3.5492310877136526`*^9, 3.549231126425867*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[CapitalOmega]m0w", "=", "0.27"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[CapitalOmega]d0w", "=", "0.73"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[CapitalOmega]r0w", " ", "=", 
+   RowBox[{"8.09", "*", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "5"}]]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5492311348153467`*^9, 3.5492311756286807`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Basic Equations in LCDM", "Subsection",
+ CellChangeTimes->{{3.549230866664009*^9, 3.5492308744344535`*^9}, {
+  3.5492336033655396`*^9, 3.549233604997633*^9}}],
+
+Cell["\<\
+H0: Hubble constant in unit of km/s/Mpc
+c: speed of light\
+\>", "Text",
+ CellChangeTimes->{{3.549230516563985*^9, 3.549230532463894*^9}, {
+   3.549230562739626*^9, 3.549230642610194*^9}, 3.549233697870945*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"H0", "=", "71"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"SpeedOfLight", "*", 
+    FractionBox["Second", 
+     RowBox[{"1000", "Meter"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"gra", "=", "GravitationalConstant"}]}], "Input",
+ CellChangeTimes->{{3.5492303964241133`*^9, 3.549230423341653*^9}, {
+   3.549230616733714*^9, 3.549230617000729*^9}, {3.5492306560559635`*^9, 
+   3.5492306689767017`*^9}, {3.5492309784924054`*^9, 3.549230979012435*^9}, {
+   3.549231697915554*^9, 3.5492317175556774`*^9}, {3.5492319105147142`*^9, 
+   3.549231929948826*^9}, {3.5492320437653356`*^9, 3.549232086203763*^9}, {
+   3.5492321453271446`*^9, 3.5492321506404486`*^9}, {3.5492321959240384`*^9, 
+   3.5492322001882825`*^9}, 3.5492336945217533`*^9}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"6.67428`*^-11", " ", 
+   SuperscriptBox["Meter", "2"], " ", "Newton"}], 
+  SuperscriptBox["Kilogram", "2"]]], "Output",
+ CellChangeTimes->{
+  3.549232152253541*^9, {3.5492322009793277`*^9, 3.5492322180803056`*^9}, {
+   3.5492337013481436`*^9, 3.549233704974351*^9}}]
+}, Open  ]],
+
+Cell["\<\
+hubble[\[CapitalOmega]m0_,\[CapitalOmega]d0_,\[CapitalOmega]k0_,z_]: Hubble \
+functions in LCDM.
+H[z]: an example of hubble function with given parameters.\
+\>", "Text",
+ CellChangeTimes->{{3.5492308916544385`*^9, 3.549230926037405*^9}, {
+  3.549231206350438*^9, 3.5492312417594633`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"hubble", "[", 
+    RowBox[{
+    "\[CapitalOmega]m0_", ",", "\[CapitalOmega]d0_", ",", 
+     "\[CapitalOmega]k0_", ",", "z_"}], "]"}], "=", 
+   RowBox[{"H0", 
+    SqrtBox[
+     RowBox[{
+      RowBox[{"\[CapitalOmega]m0", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"1", "+", "z"}], ")"}], "3"]}], "+", "\[CapitalOmega]d0", 
+      "+", 
+      RowBox[{"\[CapitalOmega]k0", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"1", "+", "z"}], ")"}], "2"]}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"H", "[", "z_", "]"}], "=", 
+   RowBox[{"hubble", "[", 
+    RowBox[{
+    "\[CapitalOmega]m0w", ",", "\[CapitalOmega]d0w", ",", "0", ",", "z"}], 
+    "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.549230928292534*^9, 3.549230972721075*^9}, {
+  3.549231003960862*^9, 3.5492310605170965`*^9}, {3.5492311815480194`*^9, 
+  3.549231200006075*^9}}],
+
+Cell[TextData[{
+ "q[\[CapitalOmega]m0_,\[CapitalOmega]d0_,\[CapitalOmega]k0_,z_]:Deceleration \
+parameter. DEF: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"q", "[", 
+     RowBox[{
+     "\[CapitalOmega]m0_", ",", "\[CapitalOmega]d0_", ",", 
+      "\[CapitalOmega]k0_", ",", "z_"}], "]"}], "=", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"-", "1"}], 
+      RowBox[{"H", "[", "z", "]"}]], 
+     FractionBox[
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"a", "[", "t", "]"}], ",", "t"}], "]"}], ",", "t"}], "]"}], 
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"a", "[", "t", "]"}], ",", "t"}], "]"}]]}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm",
+  Background->RGBColor[0.87, 0.94, 1]]
+}], "Text",
+ CellChangeTimes->{{3.549231252290066*^9, 3.5492313531138325`*^9}, {
+  3.5492320962523375`*^9, 3.5492321043998036`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"q", "[", 
+    RowBox[{
+    "\[CapitalOmega]m0_", ",", "\[CapitalOmega]d0_", ",", 
+     "\[CapitalOmega]k0_", ",", "z_"}], "]"}], "=", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"(", 
+       RowBox[{"1", "+", "z"}], ")"}], 
+      RowBox[{"hubble", "[", 
+       RowBox[{
+       "\[CapitalOmega]m0", ",", "\[CapitalOmega]d0", ",", 
+        "\[CapitalOmega]k0", ",", "z"}], "]"}]], 
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"hubble", "[", 
+        RowBox[{
+        "\[CapitalOmega]m0", ",", "\[CapitalOmega]d0", ",", 
+         "\[CapitalOmega]k0", ",", "z"}], "]"}], ",", "z"}], "]"}]}]}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.549231283434847*^9, 3.5492312987067204`*^9}, {
+  3.549231362179351*^9, 3.549231436016574*^9}}],
+
+Cell["\<\
+(General) Friedmann equations are\
+\>", "Text",
+ CellChangeTimes->{{3.5492308781386657`*^9, 3.5492308819498835`*^9}, {
+  3.5492314738697395`*^9, 3.549231474213759*^9}, {3.5492323148268394`*^9, 
+  3.5492323237983522`*^9}, {3.549232442487141*^9, 3.5492324468853927`*^9}}],
+
+Cell[BoxData[{
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"3", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "[", "t", "]"}], "'"}], "+", "k"}], ")"}]}], 
+    SuperscriptBox[
+     RowBox[{"a", "[", "t", "]"}], "2"]], "=", 
+   RowBox[{"8", " ", "\[Pi]", " ", "G", " ", "\[Rho]"}]}], 
+  TraditionalForm], "\[IndentingNewLine]", 
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"2", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"a", "[", "t", "]"}], "''"}], 
+      RowBox[{"a", "[", "t", "]"}]]}], "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{
+       RowBox[{"a", "[", "t", "]"}], "'"}], "+", "k"}], 
+     SuperscriptBox[
+      RowBox[{"a", "[", "t", "]"}], "2"]]}], "=", 
+   RowBox[{
+    RowBox[{"-", "8"}], "\[Pi]", " ", "G", " ", "p"}]}], 
+  TraditionalForm]}], "DisplayFormula",
+ CellChangeTimes->{{3.5492308781386657`*^9, 3.5492308819498835`*^9}, {
+  3.5492314738697395`*^9, 3.549231474213759*^9}, {3.5492323148268394`*^9, 
+  3.5492323389952216`*^9}},
+ Background->RGBColor[0.87, 0.94, 1]],
+
+Cell[TextData[{
+ "Since \[OpenCurlyDoubleQuote]zt\[CloseCurlyDoubleQuote] will be used as a \
+parameter in most cases, we define \[OpenCurlyDoubleQuote]ztr\
+\[CloseCurlyDoubleQuote] as a name for transition redshift, \
+\[OpenCurlyDoubleQuote]ztrr\[CloseCurlyDoubleQuote] for transition redshift \
+with a parameter r.\nztr[\[CapitalOmega]m0_,\[CapitalOmega]d0_,z_]: \
+Transition redshift in LCDM with \[CapitalOmega]k0 not zero with full \
+parameters\nztrr[r_,z_]: with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"r", "=", 
+    FractionBox["\[CapitalOmega]m0", "\[CapitalOmega]d0"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.5492324575670033`*^9, 3.549232469826705*^9}, {
+  3.549232875574912*^9, 3.549232888390645*^9}, {3.5492331633413715`*^9, 
+  3.549233175568071*^9}, {3.549233292883781*^9, 3.5492334359819655`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ztr", "[", 
+    RowBox[{"\[CapitalOmega]m0_", ",", "\[CapitalOmega]d0_", ",", "z_"}], 
+    "]"}], "=", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"2", 
+       FractionBox["\[CapitalOmega]d0", "\[CapitalOmega]m0"]}], ")"}], 
+     RowBox[{"1", "/", "3"}]], "-", "1"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ztrr", "[", 
+    RowBox[{"r_", ",", "z_"}], "]"}], "=", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      FractionBox["2", "r"], ")"}], 
+     RowBox[{"1", "/", "3"}]], "-", "1"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5492328588689566`*^9, 3.5492328657353497`*^9}, {
+   3.549233046292677*^9, 3.5492330703130507`*^9}, {3.5492331240441236`*^9, 
+   3.5492332878424926`*^9}, 3.5492333343181505`*^9}],
+
+Cell["\<\
+Regard \[OpenCurlyDoubleQuote]zt\[CloseCurlyDoubleQuote] as a paramter, solve \
+out \[CapitalOmega]d0 and \[CapitalOmega]k0=1-\[CapitalOmega]m0-\
+\[CapitalOmega]d0\
+\>", "Text",
+ CellChangeTimes->{{3.549233084426858*^9, 3.549233104857026*^9}, {
+  3.5492334432003784`*^9, 3.54923348081253*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"\[CapitalOmega]d0", "=", 
+  RowBox[{
+   FractionBox["1", "2"], "\[CapitalOmega]m0", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"1", "+", "zt"}], ")"}], "3"]}]}], "\[IndentingNewLine]", 
+ RowBox[{"\[CapitalOmega]k0", "=", 
+  RowBox[{"1", "-", "\[CapitalOmega]m0", "-", 
+   RowBox[{
+    FractionBox["1", "2"], "\[CapitalOmega]m0", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "+", "zt"}], ")"}], "3"]}]}]}]}], "DisplayFormulaNumbered",
+ CellChangeTimes->{{3.549233482931651*^9, 3.549233506668009*^9}, {
+  3.549233546413282*^9, 3.5492335844814596`*^9}},
+ Background->RGBColor[0.87, 0.94, 1]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["CAL", "Section",
+ CellChangeTimes->{{3.5492100811951485`*^9, 3.549210081701177*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Plot SN data with error bar", "Subsection",
+ CellChangeTimes->{{3.549233715551956*^9, 3.549233728075672*^9}}],
+
+Cell["\<\
+Read the data file of SCPUnion2_mu_vs_z.txt\
+\>", "Text",
+ CellChangeTimes->{{3.549233732889948*^9, 3.549233767939953*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ReadList", "[", 
+  RowBox[{"\"\<DATA\\\\UNION2\\\\SCPUnion2_AllSNe.tex\>\"", ","}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.549235852861203*^9, 3.5492358699671817`*^9}, {
+   3.549235929046561*^9, 3.549235937531046*^9}, {3.5492360204887915`*^9, 
+   3.5492360269301596`*^9}, {3.5492361000873437`*^9, 
+   3.5492361003213573`*^9}, {3.5492361341182904`*^9, 
+   3.5492361504732256`*^9}, {3.5492362827977943`*^9, 3.5492363266373014`*^9}, 
+   3.5492363931951084`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ReadList", "::", "opstl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option \[NoBreak]\\!\\(RecordSeparators\\)\
+\[NoBreak] -> \[NoBreak]\\!\\({\\({\\\"&\\\"}\\)}\\)\[NoBreak] should be a \
+string or a list of strings. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/opstl\\\", ButtonNote -> \
+\\\"ReadList::opstl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.5492363278793726`*^9}],
+
+Cell[BoxData[
+ RowBox[{"ReadList", "[", 
+  RowBox[{"\<\"DATA\\\\UNION2\\\\SCPUnion2_AllSNe.tex\"\>", ",", "Record", 
+   ",", 
+   RowBox[{"RecordSeparators", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"{", "\<\"&\"\>", "}"}], "}"}]}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.5492358715532722`*^9, 3.549235896638707*^9}, {
+   3.5492359326787686`*^9, 3.549235938310091*^9}, {3.5492360238669844`*^9, 
+   3.5492360276312*^9}, 3.5492361040925727`*^9, 3.5492361356783795`*^9, {
+   3.5492363006918178`*^9, 3.5492363278893733`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataunion", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<DATA\\\\UNION2\\\\SCPUnion2_mu_vs_z_adjust.txt\>\"", ",", 
+     "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"datauniontable", "=", 
+   RowBox[{"Grid", "[", 
+    RowBox[{
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{"Name", ",", "Redshift", ",", "Distance", ",", "Error"}], 
+         "}"}], "}"}], ",", "dataunion"}], "]"}], ",", " ", 
+     RowBox[{"Alignment", " ", "\[Rule]", " ", "Left"}], ",", " ", 
+     RowBox[{"Spacings", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", " ", "1"}], "}"}]}], ",", " ", 
+     RowBox[{"Frame", " ", "\[Rule]", " ", "All"}], ",", 
+     RowBox[{"ItemStyle", "\[Rule]", "\"\<Text\>\""}], ",", " ", 
+     RowBox[{"Background", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Gray", ",", "None"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"LightGray", ",", "None"}], "}"}]}], "}"}]}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.549233773994299*^9, 3.549233802375922*^9}, {
+   3.549233844660341*^9, 3.5492338587131443`*^9}, {3.54923423610073*^9, 
+   3.549234236587758*^9}, {3.54923439170863*^9, 3.549234418429158*^9}, {
+   3.5492345617733574`*^9, 3.549234568405737*^9}, {3.549234618969629*^9, 
+   3.5492346804201436`*^9}, 3.549234721697504*^9, {3.54923479574774*^9, 
+   3.5492348273155456`*^9}, {3.5492348791075077`*^9, 
+   3.5492349172596903`*^9}, {3.549234956913958*^9, 3.549235037986595*^9}, {
+   3.5492356896528683`*^9, 3.5492356918229923`*^9}}],
+
+Cell["Show dataunion table.", "Text",
+ CellChangeTimes->{{3.54923505450854*^9, 3.5492350665072265`*^9}, {
+  3.5492354376954575`*^9, 3.5492354424467287`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"datauniontable", ";"}]], "Input",
+ CellChangeTimes->{{3.549235068399335*^9, 3.549235093014743*^9}}],
+
+Cell["Length of this dataunion table", "Text",
+ CellChangeTimes->{{3.5492353026537333`*^9, 3.5492353105131826`*^9}, {
+  3.5492354465539637`*^9, 3.549235447083994*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"len", "=", 
+   RowBox[{"Length", "[", "dataunion", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5492353127333097`*^9, 3.5492353208427734`*^9}, 
+   3.549235400949355*^9}],
+
+Cell["\<\
+Simplify dataunion table and call it du\
+\>", "Text",
+ CellChangeTimes->{{3.549234421761349*^9, 3.549234455398273*^9}, {
+  3.549235451308236*^9, 3.549235456053507*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"du", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"dataunion", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", "2"}], "]"}], "]"}], ",", 
+       RowBox[{"dataunion", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", "3"}], "]"}], "]"}], ",", 
+       RowBox[{"dataunion", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", "4"}], "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "len"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dutable", "=", 
+   RowBox[{"Grid", "[", 
+    RowBox[{
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{"Redshift", ",", "Distance", ",", "Error"}], "}"}], "}"}], 
+       ",", "du"}], "]"}], ",", " ", 
+     RowBox[{"Alignment", " ", "\[Rule]", " ", "Left"}], ",", " ", 
+     RowBox[{"Spacings", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", " ", "1"}], "}"}]}], ",", " ", 
+     RowBox[{"Frame", " ", "\[Rule]", " ", "All"}], ",", 
+     RowBox[{"ItemStyle", "\[Rule]", "\"\<Text\>\""}], ",", " ", 
+     RowBox[{"Background", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Gray", ",", "None"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"None", ",", "None"}], "}"}]}], "}"}]}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.549234476310469*^9, 3.549234483298869*^9}, {
+  3.5492352473055677`*^9, 3.5492352941072445`*^9}, {3.5492353292882566`*^9, 
+  3.549235391376808*^9}, {3.5492354764136715`*^9, 3.549235479277836*^9}}],
+
+Cell["Show du table", "Text",
+ CellChangeTimes->{{3.5492354285899363`*^9, 3.5492354670261345`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"dutable", ";"}]], "Input",
+ CellChangeTimes->{{3.549235486116227*^9, 3.549235491982562*^9}}],
+
+Cell["Plot du table. That is SN ", "Text",
+ CellChangeTimes->{{3.549235516277952*^9, 3.5492355377781816`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"pldat", "=", 
+  RowBox[{"ErrorListPlot", "[", 
+   RowBox[{"datanw", ",", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}]], "Input"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -131,9 +595,7 @@ StyleDefinitions->Notebook[{
     StyleData[
     StyleDefinitions -> 
      FrontEnd`FileName[{"Creative"}, "PastelColor.nb", CharacterEncoding -> 
-       "CP936"]]], 
-   Cell[
-    StyleData[All]]}, WindowSize -> {707, 553}, 
+       "CP936"]]]}, WindowSize -> {707, 553}, 
   WindowMargins -> {{24, Automatic}, {Automatic, 30}}, Visible -> False, 
   FrontEndVersion -> "8.0 for Microsoft Windows (32-bit) (November 7, 2010)", 
   StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
@@ -155,16 +617,60 @@ Cell[676, 25, 763, 19, 108, "Text"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[1476, 49, 143, 2, 75, "Section"],
-Cell[1622, 53, 110, 1, 30, "Text"],
-Cell[1735, 56, 248, 4, 41, "Input"],
-Cell[1986, 62, 263, 5, 49, "Text"],
-Cell[2252, 69, 166, 5, 41, "Input"]
+Cell[CellGroupData[{
+Cell[1644, 55, 98, 1, 36, "Subsection"],
+Cell[1745, 58, 110, 1, 30, "Text"],
+Cell[1858, 61, 361, 5, 62, "Input"],
+Cell[2222, 68, 263, 5, 49, "Text"],
+Cell[2488, 75, 166, 5, 41, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2455, 79, 90, 1, 75, "Section"],
+Cell[2691, 85, 171, 2, 36, "Subsection"],
+Cell[2865, 89, 999, 32, 45, "Text"],
+Cell[3867, 123, 277, 6, 68, "Text"],
+Cell[4147, 131, 268, 5, 68, "Text"],
+Cell[4418, 138, 395, 10, 82, "Input"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[2570, 84, 107, 1, 36, "Subsection"],
-Cell[2680, 87, 972, 32, 64, "Text"]
+Cell[4850, 153, 164, 2, 36, "Subsection"],
+Cell[5017, 157, 219, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[5261, 166, 806, 15, 101, "Input"],
+Cell[6070, 183, 305, 7, 64, "Output"]
+}, Open  ]],
+Cell[6390, 193, 298, 6, 49, "Text"],
+Cell[6691, 201, 948, 29, 73, "Input"],
+Cell[7642, 232, 913, 28, 41, "Text"],
+Cell[8558, 262, 829, 25, 60, "Input"],
+Cell[9390, 289, 279, 5, 30, "Text"],
+Cell[9672, 296, 1030, 33, 110, "DisplayFormula"],
+Cell[10705, 331, 860, 16, 96, "Text"],
+Cell[11568, 349, 811, 23, 99, "Input"],
+Cell[12382, 374, 303, 6, 30, "Text"],
+Cell[12688, 382, 635, 16, 94, "DisplayFormulaNumbered"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13372, 404, 90, 1, 75, "Section"],
+Cell[CellGroupData[{
+Cell[13487, 409, 115, 1, 36, "Subsection"],
+Cell[13605, 412, 133, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[13763, 419, 485, 9, 41, "Input"],
+Cell[14251, 430, 545, 11, 21, "Message"],
+Cell[14799, 443, 525, 10, 42, "Output"]
+}, Open  ]],
+Cell[15339, 456, 1655, 38, 82, "Input"],
+Cell[16997, 496, 157, 2, 30, "Text"],
+Cell[17157, 500, 123, 2, 41, "Input"],
+Cell[17283, 504, 167, 2, 30, "Text"],
+Cell[17453, 508, 207, 5, 41, "Input"],
+Cell[17663, 515, 178, 4, 30, "Text"],
+Cell[17844, 521, 1643, 45, 82, "Input"],
+Cell[19490, 568, 99, 1, 30, "Text"],
+Cell[19592, 571, 116, 2, 41, "Input"],
+Cell[19711, 575, 110, 1, 30, "Text"],
+Cell[19824, 578, 211, 5, 41, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
