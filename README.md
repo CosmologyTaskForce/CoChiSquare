@@ -6,4 +6,4 @@ SN data files in DATA folder are taken from [http://supernova.lbl.gov/Union/](ht
 
 These are just particular examples of chi square fitting. No universal packages are constructed.
 
-BTW, I am fresh to this chi square technique and pyton.  ==!
+BTW, I am new to this chi square technique and pyton.  ==!
