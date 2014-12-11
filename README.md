@@ -1,4 +1,7 @@
+
 ##### INTRODUCTION
+
+[![DOI](https://zenodo.org/badge/7726/CosmologyTaskForce/CoChiSquare.svg)](http://dx.doi.org/10.5281/zenodo.13197)
 
 This is a pack of programs on chi square fitting for cosmological data. Programming languages used here are mathematica and python.
 
